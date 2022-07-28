@@ -1,0 +1,11 @@
+.recordFieldContainer {
+    border: 1px solid green;
+    display: flex;
+}
+
+.recordsContainer {
+    border: 1px solid red;
+    display: flex;
+    flex-direction: column;
+    max-width: 45%;
+}
