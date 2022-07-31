@@ -12,6 +12,7 @@ const Home = () => {
         }
         fetchUser().catch(console.error)
     },[])
+
   return (
     <div>
         <p>{`Hello ${data && data.user.user_name}!`}</p>

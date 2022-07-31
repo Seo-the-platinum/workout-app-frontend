@@ -1,0 +1,20 @@
+#recordContainer {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    justify-content: flex-start;
+}
+
+#recordFormContainer {
+    align-items: center;
+    background-color: rgb(255, 255, 255, .1);
+    border: 2px solid rgba(9, 173, 121, 1);
+    border-radius: 4px;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    margin-bottom: 20%;
+}

@@ -5,6 +5,7 @@ const ExerciseList = ({records}) => {
   return (
     <div className='exerciseListContainer'>
         <h1>Exercises</h1>
+        <h3>Add exercise link to go here</h3>
         {
             records.map(r=> {
                return (

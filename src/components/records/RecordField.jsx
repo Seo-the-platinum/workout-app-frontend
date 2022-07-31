@@ -3,16 +3,22 @@ import Select from 'react-select'
 import './records.css'
 import { exerciseOptions, restOptions, weightOptions } from '../../utils/selectOptions'
 
-const RecordField = ({field, value}) => {
+const RecordField = ({field, value, updateField}) => {
   const[input, setInput] = useState(value)
   const[select, setSelect] = useState(value)
 
   const handleChange = (e)=> {
-    setInput(e.target.value)
+    if (e.target.value.length > 0) {
+      setInput(parseInt(e.target.value))
+      updateField(field, parseInt(e.target.value))
+    } else {
+      setInput('')
+    }
   }
 
   const handleSelect = (e)=> {
     setSelect(e.value)
+    updateField(field, e.value)
   }
 
   let options = null
@@ -40,7 +46,7 @@ const RecordField = ({field, value}) => {
         {`${field}:`}
         </label>
         {field === 'weight' || field === 'reps' ? 
-        <input type='number' value={input} onChange={handleChange} style={{height: '35px', textAlign: 'right', width: '75px', fontSize: '18px'}}/> : 
+        <input type='number' value={input} onChange={handleChange} style={{border: 'none', borderRadius: '4px', height: '35px', textAlign: 'right', width: '75px', fontSize: '18px'}}/> : 
         <Select onChange={handleSelect} options={options} defaultValue={defaultValue} />}
     </div>
   )
