@@ -1,11 +1,13 @@
 import React from 'react'
 import ExerciseLink from './ExerciseLink'
+import AddExercise from './AddExercise'
 
-const ExerciseList = ({records}) => {
+const ExerciseList = ({records, user_id}) => {
+
   return (
     <div className='exerciseListContainer'>
         <h1>Exercises</h1>
-        <h3>Add exercise link to go here</h3>
+        <AddExercise records={records} user_id={user_id}/>
         {
             records.map(r=> {
                return (

@@ -1,4 +1,5 @@
 const exerciseValues = ['Bench Press', 'Dead Lifts', 'Rear Squats', 'Overhead Press', 'Curls', 'Tricep Pushdown']
+
 export const exerciseOptions = exerciseValues.map(el=> {
     return {
         value: el,

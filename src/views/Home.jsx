@@ -16,7 +16,7 @@ const Home = () => {
   return (
     <div>
         <p>{`Hello ${data && data.user.user_name}!`}</p>
-        {data?.records && <ExerciseList records={data.records}/>}
+        {data?.records && <ExerciseList user_id={data.user.id} records={data.records}/>}
     </div>
   )
 }

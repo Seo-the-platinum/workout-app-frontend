@@ -1,15 +1,16 @@
-import logo from './logo.svg';
-import './App.css';
 import Home from './views/Home'
-import Record from './views/Record'
+import AddRecord from './views/AddRecord'
+import EditRecord from './views/EditRecord'
 import { Route, Routes } from 'react-router-dom'
+import './App.css';
 
 function App() {
   return (
     <div className="App">
       <Routes>
         <Route path='/' element={<Home/>}/>
-        <Route path='/edit' element={<Record/>}/>
+        <Route path='/edit' element={<EditRecord/>}/>
+        <Route path='/add' element={<AddRecord/>}/>
       </Routes>
     </div>
   );
