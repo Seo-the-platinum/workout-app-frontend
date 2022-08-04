@@ -11,10 +11,17 @@ const ExerciseLink = ({exercise}) => {
     }
   return (
     <div className='exerciseContainer'>
-        <h3>{exercise.exercise}</h3>
-        <h3>{exercise.weight}</h3>
-        <h3>{`${exercise.reps} reps`}</h3>
-        <ChevronRightIcon fontSize='large' onClick={handleClick}/>
+      <div style={{display: 'flex', flexDirection: 'column', alignItems: 'flex-start'}}>
+        <h3 style={{margin: '0', color: 'white'}}>{exercise.exercise}</h3>
+        <div style={{display:'flex',}}>
+          <p style={{color: 'white'}}>{`${exercise.weight} ${exercise.weight_units}`}</p>
+          <p style={{color: 'white'}}>{`${exercise.reps} reps`}</p>
+        </div>
+      </div>
+      <div style={{alignItems: 'center', display: 'flex',}}>
+        <p style={{color: 'white'}}>Update/Delete</p>
+        <ChevronRightIcon fontSize='large' onClick={handleClick} style={{color: 'white'}}/>
+      </div>
     </div>
   )
 }

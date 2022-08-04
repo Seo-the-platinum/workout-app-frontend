@@ -9,9 +9,9 @@ const AddExercise = ({records, user_id}) => {
     }
     
   return (
-    <div style={{display: 'flex'}}>
-        <h3>Add an exercise</h3>
-        <ChevronRightIcon fontSize='large' onClick={handleClick}/>
+    <div style={{alignItems: 'center', display: 'flex'}}>
+        <h3 style={{color: 'white'}}>Add an exercise</h3>
+        <ChevronRightIcon fontSize='large' onClick={handleClick} style={{color:'white'}}/>
     </div>
   )
 }

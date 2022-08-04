@@ -1,18 +1,22 @@
 import React, { useState } from 'react'
 import { useLocation } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { recordToDelete, editRecord } from '../features/records/recordsSlice'
 import RecordField from '../components/records/RecordField'
+import NavBar from '../components/navBars/NavBar'
 import '../globalStyles.css'
-import NavBar from '../components/navBar/NavBar'
+
 const EditRecord = () => {
   const location = useLocation()
   const exercise = location.state
+  const dispatch = useDispatch()
   const [ data, setData ] = useState({
     reps: exercise.reps,
     rest: exercise.rest,
     weight: exercise.weight,
     weight_units: exercise.weight_units
   })
-
+  
   const updateRecord = async ()=> {
      await fetch(`http://127.0.0.1:5000/records/${exercise.id}`, {
       method: 'PATCH',
@@ -22,19 +26,33 @@ const EditRecord = () => {
       body: JSON.stringify(data)
     }
     )
+    dispatch(editRecord({...data, exercise: exercise.exercise, id: exercise.id}))
+  }
+
+  console.log(exercise.id)
+  const deleteRecord = async ()=> {
+   await fetch(`http://127.0.0.1:5000/records/delete/${exercise.id}`, {
+    method: 'DELETE',
+    header: {'Content-Type': 'application/json'}
+   })
+   dispatch(recordToDelete(exercise.id))
   }
 
   const updateField = (field, value)=> {
-    console.log(field, value)
     setData({
       ...data,
       [field]: value,
     })
   }
 
-  const handleClick = (e)=> {
+  const handleUpdate = (e)=> {
     e.preventDefault()
     updateRecord().catch(console.error)
+  }
+
+  const handleDelete = (e)=> {
+    e.preventDefault()
+    deleteRecord().catch(console.error)
   }
 
   let backgroundImage
@@ -68,15 +86,20 @@ const EditRecord = () => {
   
   return (
     <div id='recordContainer' style={{backgroundImage: `url(${backgroundImage})`,}}>
-      <NavBar header={'edit'}/>
+      <NavBar header={'edit'} exercise={exercise.exercise}/>
       <form id='recordFormContainer'>
         <h3>{`Exercise: ${exercise.exercise}`}</h3>
         {keys.map(k=> {
           return <RecordField key={k} field={k} value={exercise[k]} updateField={updateField}/>
         })}
-        <button onClick={handleClick} style={{border: 'none', borderRadius: '4px', backgroundColor: 'white', marginBottom: '10%', marginTop: '10%', width: '30%', height: '50px'}}>
-          Update
-        </button>
+        <div style={{display: 'flex', width: '60%', justifyContent: 'space-between'}}>
+          <button onClick={handleUpdate} style={{border: 'none', borderRadius: '4px', backgroundColor: 'white', marginBottom: '10%', marginTop: '10%', width: '30%', height: '50px'}}>
+            Update
+          </button>
+          <button onClick={handleDelete} style={{border: 'none', borderRadius: '4px', backgroundColor: 'white', marginBottom: '10%', marginTop: '10%', width: '30%', height: '50px'}}>
+            Delete
+          </button>
+        </div>
       </form>
     </div>
   )

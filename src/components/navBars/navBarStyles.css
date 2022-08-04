@@ -1,0 +1,12 @@
+#mainNavContainer {
+    background-color: black;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.mainNavButton {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 18px;
+}

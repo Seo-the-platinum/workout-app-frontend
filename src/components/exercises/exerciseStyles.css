@@ -1,12 +1,16 @@
 .exerciseContainer {
+    align-items: center;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
+    width: 90%;
 }
 
 .exerciseListContainer {
-    border: solid 1px black;
+    align-items: center;
+    background-color: rgba(0,0,0,0.3);
+    border: solid 1px white;
     display: flex;
     flex-direction: column;
     margin-left: 1%;
-    max-width: 45%;
+    min-width: 80%;
 }

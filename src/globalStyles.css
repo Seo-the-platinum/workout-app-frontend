@@ -6,6 +6,32 @@
     min-width: 95%;
 }
 
+#exercisesContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    justify-content: space-between;
+}
+
+.home {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    justify-content: space-between;
+}
+
 .lightLabel {
     color: white;
 }
@@ -22,7 +48,7 @@
 
 #recordFormContainer {
     align-items: center;
-    background-color: rgb(255, 255, 255, .1);
+    background-color: rgb(255, 255, 255, .3);
     border: 2px solid rgba(9, 173, 121, 1);
     border-radius: 4px;
     display: flex;
