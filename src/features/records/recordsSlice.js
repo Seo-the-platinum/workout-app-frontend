@@ -11,7 +11,7 @@ export const recordsSlice = createSlice({
         },
 
         updateRecords: (state, action)=> {
-            state.value = action.payload
+            state.value = action.payload ? action.payload : []
         },
 
         editRecord: (state, action)=> {

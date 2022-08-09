@@ -2,8 +2,7 @@ import React from 'react'
 import ProfileField from './ProfileField'
 
 const ProfileDetails = ({user}) => {
-    console.log('user data here:',user)
-    const keys = Object.keys(user)
+  const keys = Object.keys(user).filter(key=> key !== 'sex' && key !== 'id' && key !== 'email')
   return (
     <div style={{display: 'flex', alignItems: 'center', flexDirection: 'column'}}>
         {keys.map(k=> {

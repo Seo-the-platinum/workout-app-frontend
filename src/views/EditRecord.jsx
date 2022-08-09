@@ -81,8 +81,8 @@ const EditRecord = () => {
   }
 
   
+  //O(n), chaining methods is the same as sequential, not nested loops
   const keys = Object.keys(exercise).filter(k=> k !== 'id' && k !== 'exercise')
-  //O(n), chaining methods is the same a sequential, not nested loops
   
   return (
     <div id='recordContainer' style={{backgroundImage: `url(${backgroundImage})`,}}>

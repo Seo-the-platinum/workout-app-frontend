@@ -18,7 +18,7 @@ function App() {
 
     useEffect(()=> {
         const fetchUser = async ()=> {
-            const data = await fetch('http://127.0.0.1:5000/users/2')
+            const data = await fetch('http://127.0.0.1:5000/users/4')
             const json = await data.json()
             setData(json.user[0])
             dispatch(updateUser(json.user[0].user))

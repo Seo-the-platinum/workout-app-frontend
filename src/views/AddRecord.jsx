@@ -41,7 +41,7 @@ const AddRecord = () => {
 
   const updatedExerciseOptions = ()=> {
     const hashMap = {}
-    records.map(r=> hashMap[r.exercise] = true)
+    records && records.map(r=> hashMap[r.exercise] = true)
     return exerciseOptions.filter(o=> hashMap[o.value] !== true)
   }
 
