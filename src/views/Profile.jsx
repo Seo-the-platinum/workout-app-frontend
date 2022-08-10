@@ -5,7 +5,7 @@ import ProfileDetails from '../components/profile/ProfileDetails'
 const Profile = () => {
   const user = useSelector(state=> state.user.value)
   return (
-    <div>
+    <div style={{display: 'flex', alignItems: 'center', flexDirection: 'column'}}>
       <ProfileDetails user={user}/>
     </div>
   )
