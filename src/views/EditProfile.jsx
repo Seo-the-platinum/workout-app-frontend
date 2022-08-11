@@ -8,6 +8,7 @@ const EditProfile = () => {
     const location = useLocation()
     const user = location.state
     const [ updatedUser, setUser ] = useState(user)
+    const [ errors, setErrors ] = useState({})
     const options = [
         {
             label: 'LBS',
@@ -27,7 +28,21 @@ const EditProfile = () => {
         })
     }
 
-    const updateUser = (field, value)=> {
+    const updateUser = (field, value, error)=> {
+        if (error) {
+            setErrors(prev=> {
+                return {
+                    ...prev,
+                    [field]: error,
+                }
+            })
+        } else if (!error) {
+            setErrors(prev=> {
+                const copy = {...prev}
+                delete copy[field]
+                return copy
+            })
+        }
         setUser(curr=> {
            return {
             ...curr,
@@ -35,17 +50,20 @@ const EditProfile = () => {
            }
         })
     }
-    console.log(updatedUser)
     const keys = Object.keys(user).filter(key=> key !== 'sex' && key !== 'weight_units' && key !== 'id' && key !== 'email')
 
     const handleSubmit = (e)=> {
         e.preventDefault()
-        console.log('do the fire!')
     }
+
   return (
     <div style={{display: 'flex', flexDirection: 'column'}}>
         <ProfileNavBar/>
-        <form>
+        <form style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+            <div style={{display: 'flex', flexWrap: 'wrap', width: '50%', justifyContent: 'center'}}>
+                {
+                Object.keys(errors).map(key=> <p style={{margin: '0'}}>{errors[key]}</p>)}
+            </div>
             {keys.map(key=> <ProfileInput field={key} key={key} updateUser={updateUser} value={user[key]}/>)}
             <Select options={options}/>
             <button onClick={handleSubmit}>
