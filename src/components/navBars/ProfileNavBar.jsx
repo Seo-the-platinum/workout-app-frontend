@@ -8,8 +8,8 @@ const ProfileNavBar = () => {
         navigate('/profile')
     }
   return (
-    <div style={{alignItems: 'center', display: 'flex'}}>
-        <ChevronLeftIcon size='large' onClick={toProfile}/>
+    <div style={{alignItems: 'center', display: 'flex', width: '100%',}}>
+        <ChevronLeftIcon fontSize='large' onClick={toProfile}/>
         <h3>Edit Profile</h3>
     </div>
   )

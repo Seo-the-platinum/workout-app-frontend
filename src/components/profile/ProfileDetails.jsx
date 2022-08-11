@@ -2,6 +2,7 @@ import React from 'react'
 import ProfileField from './ProfileField'
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import { useNavigate } from 'react-router-dom'
+import './profileStyles.css'
 
 const ProfileDetails = ({user}) => {
   const navigate = useNavigate()
@@ -10,13 +11,17 @@ const ProfileDetails = ({user}) => {
   }
   const keys = Object.keys(user).filter(key=> key !== 'sex' && key !== 'id' && key !== 'email')
   return (
-    <div style={{display: 'flex', alignItems: 'center',}}>
-      <div style={{display: 'flex', alignItems: 'center', flexDirection: 'column'}}>
+    <div id='profileDetails'>
+      <h1 style={{color: 'white'}}>Profile</h1>
+      <div style={{display: 'flex', alignItems: 'center', flexDirection: 'column', width: '100%'}}>
         {keys.map(k=> {
             return <ProfileField key={k} field={k} value={user[k]}/>
         })}
       </div>
-      <ChevronRightIcon size='large' onClick={toEditProfile}/>
+      <div style={{alignItems: 'center', display: 'flex',}}>
+        <p style={{color: 'white'}}>Update</p>
+        <ChevronRightIcon style={{color: 'white'}} fontSize='large' onClick={toEditProfile}/>
+      </div>
     </div>
   )
 }

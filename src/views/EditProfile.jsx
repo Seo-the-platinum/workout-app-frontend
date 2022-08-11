@@ -3,6 +3,7 @@ import ProfileNavBar from '../components/navBars/ProfileNavBar'
 import { useLocation } from 'react-router-dom'
 import ProfileInput from '../components/profile/ProfileInput'
 import Select from 'react-select'
+import '../globalStyles.css'
 
 const EditProfile = () => {
     const location = useLocation()
@@ -51,21 +52,32 @@ const EditProfile = () => {
         })
     }
     const keys = Object.keys(user).filter(key=> key !== 'sex' && key !== 'weight_units' && key !== 'id' && key !== 'email')
+    const defaultOptions = options.filter(o=> o.value === user.weight_units)
 
     const handleSubmit = (e)=> {
         e.preventDefault()
     }
 
   return (
-    <div style={{display: 'flex', flexDirection: 'column'}}>
+    <div className='containerWithImage' style={{backgroundImage: 'url(./images/profileEdit.jpg)',}}>
         <ProfileNavBar/>
-        <form style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
-            <div style={{display: 'flex', flexWrap: 'wrap', width: '50%', justifyContent: 'center'}}>
+        <form style={{
+                backgroundColor: 'rgb(255, 255, 255, .3)',
+                border:'2px solid rgba(9, 173, 121, 1)', 
+                display: 'flex', flexDirection: 'column', 
+                alignItems: 'center', 
+                width: '95%', 
+                borderRadius:'4px'
+            }}>
+            <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', width:'100%'}}>
                 {
-                Object.keys(errors).map(key=> <p style={{margin: '0'}}>{errors[key]}</p>)}
+                Object.keys(errors).map(key=> <p key={key} style={{color:'red', fontSize: '12px', margin: '1%'}}>{errors[key]}</p>)}
             </div>
             {keys.map(key=> <ProfileInput field={key} key={key} updateUser={updateUser} value={user[key]}/>)}
-            <Select options={options}/>
+            <div style={{alignItems: 'center', display: 'flex', justifyContent:'space-between', width: '95%'}}>
+                <label>Weigh_units:</label>
+                <Select defaultValue={defaultOptions} options={options} styles={{color: 'red'}}/>
+            </div>
             <button onClick={handleSubmit}>
                 Update
             </button>

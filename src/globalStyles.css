@@ -36,6 +36,19 @@
     color: white;
 }
 
+#profileContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    justify-content: space-between;
+}
+
 #recordContainer {
     background-position: center;
     background-repeat: no-repeat;
@@ -54,4 +67,17 @@
     display: flex;
     flex-direction: column;
     margin-bottom: 35%;
+}
+
+.containerWithImage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    justify-content: space-between;
 }
