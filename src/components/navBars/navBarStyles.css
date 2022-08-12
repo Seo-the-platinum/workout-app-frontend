@@ -1,12 +1,34 @@
-#mainNavContainer {
-    background-color: black;
-    display: flex;
-    justify-content: space-evenly;
-}
+/* CLASSES */
 
 .mainNavButton {
     background: none;
     border: none;
     color: white;
     font-size: 18px;
+}
+
+.navBarContainer {
+    align-items: center;
+    display: flex;
+    width: 100%;
+}
+
+/* IDS */
+
+#mainNavContainer {
+    background-color: black;
+    display: flex;
+    justify-content: space-evenly;
+    height: 60px;
+    width: 100%;
+}
+
+#navBarBackArrow {
+    display: flex;
+    flex: 1;
+}
+
+#navBarHeader {
+    display: flex;
+    flex: 2; 
 }

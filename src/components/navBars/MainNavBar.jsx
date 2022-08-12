@@ -10,7 +10,7 @@ const MainNavBar = () => {
     }
     
   return (
-    <div id='mainNavContainer' style={{ backgroundColor: 'black', display: 'flex', justifyContent: 'space-evenly' }}>
+    <div id='mainNavContainer'>
         {tabs.map(t=>
             <button className='mainNavButton' key={t.label} onClick={()=>handleTab(t.path)}>
                 {t.label}

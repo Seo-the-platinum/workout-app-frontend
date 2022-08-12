@@ -10,7 +10,7 @@ const AddExercise = ({records, user_id}) => {
     
   return (
     <div style={{alignItems: 'center', display: 'flex'}}>
-        <h3 style={{color: 'white'}}>Add an exercise</h3>
+        <h3 style={{color: 'white'}}>Add Record</h3>
         <ChevronRightIcon fontSize='large' onClick={handleClick} style={{color:'white'}}/>
     </div>
   )

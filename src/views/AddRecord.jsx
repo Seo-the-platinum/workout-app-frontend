@@ -11,7 +11,6 @@ const AddRecord = () => {
   const location = useLocation()
   const { records, user_id } = location.state
   const dispatch = useDispatch()
-  console.log(user_id)
   const [ data, setData ] = useState({
     exercise: '',
     reps: null,
@@ -45,6 +44,8 @@ const AddRecord = () => {
     return exerciseOptions.filter(o=> hashMap[o.value] !== true)
   }
 
+  const filteredExercises = updatedExerciseOptions()
+
   const addRecord = async ()=> {
     const request = await fetch('http://127.0.0.1:5000/records/create', {
       method: 'POST',
@@ -64,12 +65,12 @@ const AddRecord = () => {
     addRecord().catch(console.error)
   }
   return (
-    <div id='recordContainer' style={{backgroundImage: 'url(./images/add-workout.jpg)'}}>
+    <div className='viewContainer' style={{backgroundImage: 'url(./images/add-workout.jpg)'}}>
       <NavBar header={'add'}/>
-      <form id='recordFormContainer'>
+      <form className='formContainer'>
         <div className='addFieldContainer'>
           <label className='lightLabel'> Exercise:</label>
-            <Select name='exercise' onChange={(e)=> handleSelect(e,'exercise')} options={updatedExerciseOptions()}/>
+            <Select defaultValue={filteredExercises[0]} name='exercise' onChange={(e)=> handleSelect(e,'exercise')} options={filteredExercises}/>
         </div>
         <div className='addFieldContainer'>
           <label className='lightLabel'>Reps:</label>

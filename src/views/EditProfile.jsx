@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
-import ProfileNavBar from '../components/navBars/ProfileNavBar'
+import { useDispatch } from 'react-redux'
+import { updateUser } from '../features/user/userSlice'
+import NavBar from '../components/navBars/NavBar'
 import { useLocation } from 'react-router-dom'
 import ProfileInput from '../components/profile/ProfileInput'
 import Select from 'react-select'
@@ -10,6 +12,7 @@ const EditProfile = () => {
     const user = location.state
     const [ updatedUser, setUser ] = useState(user)
     const [ errors, setErrors ] = useState({})
+    const dispatch = useDispatch()
     const options = [
         {
             label: 'LBS',
@@ -22,14 +25,14 @@ const EditProfile = () => {
     ]
 
     const sendData = async ()=> {
-        const data = await fetch('http://127.0.0.1:5000', {
+        const request = await fetch(`http://127.0.0.1:5000/users/${user.id}`, {
             body: JSON.stringify(updatedUser),
             headers: {'Content-Type': 'application/json'},
             method: 'PATCH',
         })
     }
 
-    const updateUser = (field, value, error)=> {
+    const handleUser = (field, value, error)=> {
         if (error) {
             setErrors(prev=> {
                 return {
@@ -56,26 +59,24 @@ const EditProfile = () => {
 
     const handleSubmit = (e)=> {
         e.preventDefault()
+        sendData()
+        dispatch(updateUser(updatedUser))
     }
 
+    console.log('outside:',updatedUser)
   return (
-    <div className='containerWithImage' style={{backgroundImage: 'url(./images/profileEdit.jpg)',}}>
-        <ProfileNavBar/>
-        <form style={{
-                backgroundColor: 'rgb(255, 255, 255, .3)',
-                border:'2px solid rgba(9, 173, 121, 1)', 
-                display: 'flex', flexDirection: 'column', 
-                alignItems: 'center', 
-                width: '95%', 
-                borderRadius:'4px'
-            }}>
+    <div className='viewContainer' style={{backgroundImage: 'url(./images/profileEdit.jpg)'}}>
+        <NavBar/>
+        <form className='formContainer'>
             <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', width:'100%'}}>
                 {
                 Object.keys(errors).map(key=> <p key={key} style={{color:'red', fontSize: '12px', margin: '1%'}}>{errors[key]}</p>)}
             </div>
-            {keys.map(key=> <ProfileInput field={key} key={key} updateUser={updateUser} value={user[key]}/>)}
+            {keys.map(key=> <ProfileInput field={key} key={key} updateUser={handleUser} value={user[key]}/>)}
             <div style={{alignItems: 'center', display: 'flex', justifyContent:'space-between', width: '95%'}}>
-                <label>Weigh_units:</label>
+                <label>
+                    <h3 style={{color: 'white'}}>Weight_units:</h3>
+                </label>
                 <Select defaultValue={defaultOptions} options={options} styles={{color: 'red'}}/>
             </div>
             <button onClick={handleSubmit}>

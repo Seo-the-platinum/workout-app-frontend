@@ -29,7 +29,6 @@ const EditRecord = () => {
     dispatch(editRecord({...data, exercise: exercise.exercise, id: exercise.id}))
   }
 
-  console.log(exercise.id)
   const deleteRecord = async ()=> {
    await fetch(`http://127.0.0.1:5000/records/delete/${exercise.id}`, {
     method: 'DELETE',
@@ -85,9 +84,9 @@ const EditRecord = () => {
   const keys = Object.keys(exercise).filter(k=> k !== 'id' && k !== 'exercise')
   
   return (
-    <div id='recordContainer' style={{backgroundImage: `url(${backgroundImage})`,}}>
+    <div className='viewContainer' style={{backgroundImage: `url(${backgroundImage})`,}}>
       <NavBar header={'edit'} exercise={exercise.exercise}/>
-      <form id='recordFormContainer'>
+      <form className='formContainer'>
         <h3>{`Exercise: ${exercise.exercise}`}</h3>
         {keys.map(k=> {
           return <RecordField key={k} field={k} value={exercise[k]} updateField={updateField}/>

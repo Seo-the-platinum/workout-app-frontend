@@ -23,14 +23,16 @@ const ProfileInput = ({field, updateUser, value}) => {
     }
   return (
     <div style={{display: 'flex', justifyContent: 'space-between', minWidth: '95%'}}>
-        <label>{field}</label>
+        <label>
+            <h3 style={{color: 'white'}}>{field}</h3>
+        </label>
         <input
             className='input'
             id={field}
             name={field} 
             onChange={handleChange} value={inputValue}
             required
-            style={{fontSize: '18px', height: '35px', textAlign:'right',}}
+            style={{fontSize: '18px', height: '35px', textAlign:'right', width: field === 'user_name' ? '40%' : '20%'}}
             type={field === 'user_name' ? 'text' : 'number'}/>
     </div>
   )

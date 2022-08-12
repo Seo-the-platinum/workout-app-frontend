@@ -5,7 +5,7 @@ import '../globalStyles.css'
 const Home = () => {
   const user = useSelector(state=> state.user.value)
   return (
-    <div className='home' style={{backgroundImage: 'url(./images/home.jpg)'}}>
+    <div className='viewContainer' style={{backgroundImage: 'url(./images/home.jpg)'}}>
         { user && <p style={{color: 'white'}}>{`Hello ${user.user_name}!`}</p>}
     </div>
   )
