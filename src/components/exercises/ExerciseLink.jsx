@@ -13,8 +13,8 @@ const ExerciseLink = ({exercise}) => {
     <div className='exerciseContainer'>
       <div style={{display: 'flex', flexDirection: 'column', alignItems: 'flex-start'}}>
         <h3 style={{margin: '0', color: 'white'}}>{exercise.exercise}</h3>
-        <div style={{display:'flex',}}>
-          <p style={{color: 'white'}}>{`${exercise.weight} ${exercise.weight_units}`}</p>
+        <div style={{display:'flex', gap: '10px'}}>
+          <p style={{color: 'white',}}>{`${exercise.weight} ${exercise.weight_units}`}</p>
           <p style={{color: 'white'}}>{`${exercise.reps} reps`}</p>
         </div>
       </div>

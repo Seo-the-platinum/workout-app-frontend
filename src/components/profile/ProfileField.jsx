@@ -1,11 +1,11 @@
 import React from 'react'
 
 const ProfileField = ({field, value}) => {
-  
+  const upperCaseField = field[0].toUpperCase().concat(field.slice(1))
   return (
-    <div style={{alignItems:'center', display: 'flex', justifyContent: 'space-between', paddingLeft: '10px', paddingRight: '10px',minWidth: '90%'}}>
-        <h2 style={{color:'white', margin: 0}}>{field}:</h2>
-        <p style={{color: 'white', fontSize: '24px'}}>{value}</p>
+    <div style={{alignItems:'center', display: 'flex', justifyContent: 'space-between', minWidth: '85%'}}>
+        <h3 style={{color:'white', margin: 0}}>{upperCaseField}</h3>
+        <p style={{color: 'white',}}>{value}</p>
     </div>
   )
 }

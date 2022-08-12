@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useLocation } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { recordToDelete, editRecord } from '../features/records/recordsSlice'
 import RecordField from '../components/records/RecordField'
@@ -10,6 +10,7 @@ const EditRecord = () => {
   const location = useLocation()
   const exercise = location.state
   const dispatch = useDispatch()
+  const navigate = useNavigate()
   const [ data, setData ] = useState({
     reps: exercise.reps,
     rest: exercise.rest,
@@ -47,11 +48,13 @@ const EditRecord = () => {
   const handleUpdate = (e)=> {
     e.preventDefault()
     updateRecord().catch(console.error)
+    navigate('/exercises')
   }
 
   const handleDelete = (e)=> {
     e.preventDefault()
     deleteRecord().catch(console.error)
+    navigate('/exercises')
   }
 
   let backgroundImage
@@ -92,10 +95,10 @@ const EditRecord = () => {
           return <RecordField key={k} field={k} value={exercise[k]} updateField={updateField}/>
         })}
         <div style={{display: 'flex', width: '60%', justifyContent: 'space-between'}}>
-          <button onClick={handleUpdate} style={{border: 'none', borderRadius: '4px', backgroundColor: 'white', marginBottom: '10%', marginTop: '10%', width: '30%', height: '50px'}}>
+          <button className='button' onClick={handleUpdate}>
             Update
           </button>
-          <button onClick={handleDelete} style={{border: 'none', borderRadius: '4px', backgroundColor: 'white', marginBottom: '10%', marginTop: '10%', width: '30%', height: '50px'}}>
+          <button className='button' onClick={handleDelete}>
             Delete
           </button>
         </div>

@@ -59,11 +59,15 @@ const EditProfile = () => {
 
     const handleSubmit = (e)=> {
         e.preventDefault()
-        sendData()
-        dispatch(updateUser(updatedUser))
+        
+        if (Object.keys(errors).length > 0) {
+            return
+        } else {
+            sendData()
+            dispatch(updateUser(updatedUser))
+        }
     }
 
-    console.log('outside:',updatedUser)
   return (
     <div className='viewContainer' style={{backgroundImage: 'url(./images/profileEdit.jpg)'}}>
         <NavBar/>
@@ -79,7 +83,7 @@ const EditProfile = () => {
                 </label>
                 <Select defaultValue={defaultOptions} options={options} styles={{color: 'red'}}/>
             </div>
-            <button onClick={handleSubmit}>
+            <button className='button' onClick={handleSubmit}>
                 Update
             </button>
         </form>

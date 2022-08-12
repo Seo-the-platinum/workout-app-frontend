@@ -8,9 +8,11 @@
 #profileDetails {
     align-items: center;
     background-color: rgba(0,0,0,0.3);
-    border: solid 1px white;
+    border: solid 2px white;
+    border-radius: 4px;
     display: flex;
     flex-direction: column;
+    margin-bottom: 35%;
     margin-left: 1%;
     min-width: 80%;
 }

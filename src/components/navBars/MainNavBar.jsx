@@ -5,15 +5,23 @@ import './navBarStyles.css'
 
 const MainNavBar = () => {
     const navigate = useNavigate()
-    const handleTab = (path)=> {
-        navigate(path)
+    const handleTab = (tab, e)=> {
+        const tabs = document.getElementsByClassName('mainNavButton')
+        const selected = document.getElementById(e.target.id)
+        selected.style.color = 'rgba(9, 173, 121, 1)'
+        for (let i = 0; i < 4; i++) {
+            if (tabs[i] !== selected) {
+                tabs[i].style.color = 'white'
+            }
+        }
+        navigate(tab.path)
     }
     
   return (
     <div id='mainNavContainer'>
-        {tabs.map(t=>
-            <button className='mainNavButton' key={t.label} onClick={()=>handleTab(t.path)}>
-                {t.label}
+        {tabs.map(tab=>
+            <button className='mainNavButton' key={tab.label} onClick={(e)=>handleTab(tab,e)} id={tab.label}>
+                {tab.label}
             </button>
         )}
     </div>

@@ -31,7 +31,6 @@ const ProfileInput = ({field, updateUser, value}) => {
             id={field}
             name={field} 
             onChange={handleChange} value={inputValue}
-            required
             style={{fontSize: '18px', height: '35px', textAlign:'right', width: field === 'user_name' ? '40%' : '20%'}}
             type={field === 'user_name' ? 'text' : 'number'}/>
     </div>

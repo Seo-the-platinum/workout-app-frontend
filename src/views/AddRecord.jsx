@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { addToRecords } from '../features/records/recordsSlice'
-import { useLocation } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import Select from 'react-select'
 import NavBar from '../components/navBars/NavBar'
 import { exerciseOptions, restOptions, weightOptions } from '../utils/selectOptions'
@@ -10,7 +10,10 @@ import '../globalStyles.css'
 const AddRecord = () => {
   const location = useLocation()
   const { records, user_id } = location.state
+  const navigate = useNavigate()
   const dispatch = useDispatch()
+  //figure out way to fix bug when updating exercise without changing initial selection
+  //pass data from link
   const [ data, setData ] = useState({
     exercise: '',
     reps: null,
@@ -19,6 +22,8 @@ const AddRecord = () => {
     weight_units: weightOptions[0].value,
     user_id: user_id
   })
+
+  console.log(data.exercise)
 
   const handleSelect = (e, field)=> {
     setData(prev => {
@@ -63,6 +68,7 @@ const AddRecord = () => {
   const handleAdd = (e)=> {
     e.preventDefault()
     addRecord().catch(console.error)
+    navigate('/exercises')
   }
   return (
     <div className='viewContainer' style={{backgroundImage: 'url(./images/add-workout.jpg)'}}>
@@ -88,7 +94,7 @@ const AddRecord = () => {
           <label className='lightLabel'>Weight Units:</label>
           <Select defaultValue={weightOptions[0]} onChange={(e)=> handleSelect(e, 'weight_units')} options={weightOptions}/>
         </div>
-        <button onClick={handleAdd}>Add</button>
+        <button className='button' onClick={handleAdd}>Add</button>
       </form>
     </div>
   )

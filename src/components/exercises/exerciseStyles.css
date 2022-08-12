@@ -2,15 +2,17 @@
     align-items: center;
     display: flex;
     justify-content: space-between;
-    width: 90%;
+    width: 95%;
 }
 
 .exerciseListContainer {
     align-items: center;
     background-color: rgba(0,0,0,0.3);
-    border: solid 1px white;
+    border: solid 2px white;
+    border-radius: 4px;
     display: flex;
     flex-direction: column;
     margin-left: 1%;
     min-width: 80%;
+    margin-bottom: 35%;
 }
