@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux'
 import { recordToDelete, editRecord } from '../features/records/recordsSlice'
 import RecordField from '../components/records/RecordField'
 import NavBar from '../components/navBars/NavBar'
+import { editErrorChecker } from '../utils/editRecordValidator'
 import '../globalStyles.css'
 
 const EditRecord = () => {
@@ -17,7 +18,8 @@ const EditRecord = () => {
     weight: exercise.weight,
     weight_units: exercise.weight_units
   })
-  
+  const [ errors, setErrors ] = useState({})
+
   const updateRecord = async ()=> {
      await fetch(`http://127.0.0.1:5000/records/${exercise.id}`, {
       method: 'PATCH',
@@ -39,6 +41,21 @@ const EditRecord = () => {
   }
 
   const updateField = (field, value)=> {
+    const hasErrors = editErrorChecker(field, value)
+    if (hasErrors) {
+      setErrors(curr=> {
+        return {
+          ...curr,
+          [field]: hasErrors
+        }
+      })
+    } else if (!hasErrors) {
+      setErrors(curr=> {
+        const copy = {...curr,}
+        delete copy[field]
+        return copy
+      })
+    }
     setData({
       ...data,
       [field]: value,
@@ -47,8 +64,13 @@ const EditRecord = () => {
 
   const handleUpdate = (e)=> {
     e.preventDefault()
-    updateRecord().catch(console.error)
-    navigate('/exercises')
+    if (!Object.keys(errors).length) {
+      console.log('no errors here!')
+      updateRecord().catch(console.error)
+      navigate('/exercises')
+    } else {
+      return
+    }
   }
 
   const handleDelete = (e)=> {
@@ -89,6 +111,9 @@ const EditRecord = () => {
   return (
     <div className='viewContainer' style={{backgroundImage: `url(${backgroundImage})`,}}>
       <NavBar header={'edit'} exercise={exercise.exercise}/>
+      {Object.keys(errors).map(error=> {
+        return <p key={error} style={{color: 'red'}}>{errors[error]}</p>
+      })}
       <form className='formContainer'>
         <h3>{`Exercise: ${exercise.exercise}`}</h3>
         {keys.map(k=> {

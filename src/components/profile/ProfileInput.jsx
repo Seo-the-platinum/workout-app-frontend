@@ -6,21 +6,24 @@ const ProfileInput = ({field, updateUser, value}) => {
 
     const handleChange = (e)=> {
         const hasErrors = errorChecker(e.target.name)
+        const regExValue = e.target.value.replace(/^0+/, '')
         if (!hasErrors) {
             if (e.target.name === 'user_name') {
-                updateUser(field, e.target.value)
-                setValue(e.target.value)
+                updateUser(field, regExValue)
+                setValue(regExValue)
             } else if (e.target.value.length > 0){
-                updateUser(field, parseInt(e.target.value))
-                setValue(parseInt(e.target.value))
+                console.log(e.target.value, parseInt(regExValue))
+                updateUser(field, parseInt(regExValue))
+                setValue(parseInt(regExValue))
             } else {
                 setValue('')
             }
         } else {
             updateUser(field, e.target.value, hasErrors)
-            setValue(e.target.value)
+            setValue(regExValue)
         }
     }
+    console.log(typeof inputValue)
   return (
     <div style={{display: 'flex', justifyContent: 'space-between', minWidth: '95%'}}>
         <label>
@@ -30,7 +33,8 @@ const ProfileInput = ({field, updateUser, value}) => {
             className='input'
             id={field}
             name={field} 
-            onChange={handleChange} value={inputValue}
+            onChange={handleChange}
+            value={inputValue}
             style={{fontSize: '18px', height: '35px', textAlign:'right', width: field === 'user_name' ? '40%' : '20%'}}
             type={field === 'user_name' ? 'text' : 'number'}/>
     </div>

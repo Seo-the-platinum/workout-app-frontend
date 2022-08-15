@@ -12,13 +12,12 @@ const ExerciseList = ({records, user_id}) => {
     return exerciseOptions.filter(o=> hashMap[o.value] !== true)
   }
   const filteredExercises = updatedExerciseOptions()
-  console.log(filteredExercises)
+  
   return (
     <div className='exerciseListContainer'>
-        <h1 style={{color: 'white'}}>Exercises</h1>
         {
           filteredExercises.length > 0 || !records ?
-        <AddExercise records={records} user_id={user_id}/> :
+        <AddExercise records={filteredExercises} user_id={user_id} /> :
         null
         }
         {

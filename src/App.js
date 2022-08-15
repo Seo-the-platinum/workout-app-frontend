@@ -7,7 +7,6 @@ import Home from './views/Home'
 import AddRecord from './views/AddRecord'
 import EditRecord from './views/EditRecord'
 import Exercises from './views/Exercises'
-import Visits from './views/Visits'
 import Profile from './views/Profile'
 import EditProfile from './views/EditProfile'
 import { Route, Routes } from 'react-router-dom'
@@ -36,7 +35,6 @@ function App() {
         <Route path='/add' element={<AddRecord/>}/>
         <Route path='/profile' element={<Profile/>}/>
         <Route path='/edit-profile' element={<EditProfile/>}/>
-        <Route path='/visits' element={<Visits/>}/>
         <Route path='/exercises' element={<Exercises/>}/>
       </Routes>
     </div>

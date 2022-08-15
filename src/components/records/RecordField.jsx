@@ -8,11 +8,13 @@ const RecordField = ({field, value, updateField}) => {
   const[select, setSelect] = useState(value)
 
   const handleChange = (e)=> {
-    if (e.target.value.length > 0) {
-      setInput(parseInt(e.target.value))
-      updateField(field, parseInt(e.target.value))
+    const regExValue = e.target.value.replace(/^0+/, '')
+    if (regExValue.length > 0) {
+      setInput(parseInt(regExValue))
+      updateField(field, parseInt(regExValue))
     } else {
       setInput('')
+      updateField(field, regExValue)
     }
   }
 
@@ -46,7 +48,7 @@ const RecordField = ({field, value, updateField}) => {
         {`${field}:`}
         </label>
         {field === 'weight' || field === 'reps' ? 
-        <input type='number' value={input} onChange={handleChange} style={{border: 'none', borderRadius: '4px', height: '35px', textAlign: 'right', width: '75px', fontSize: '18px'}}/> : 
+        <input id={field} type='number' value={input} onChange={handleChange} style={{border: 'none', borderRadius: '4px', height: '35px', textAlign: 'right', width: '75px', fontSize: '18px'}}/> : 
         <Select onChange={handleSelect} options={options} defaultValue={defaultValue} />}
     </div>
   )
