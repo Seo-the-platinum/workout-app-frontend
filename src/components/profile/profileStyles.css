@@ -9,7 +9,6 @@
     display: flex;
     flex-direction: column;
     margin-bottom: 35%;
-    margin-left: 1%;
     min-width: 80%;
 }
 
@@ -30,6 +29,7 @@
 
 #profileFieldContainer {
     align-items: center;
+    border-bottom: 1px solid white;
     display: flex;
     justify-content: space-between;
     min-width: 85%;
@@ -43,11 +43,41 @@
     min-width: 95%;
 }
 
+#user_name {
+    width: 40%;
+}
+
 /*
     CLASSES
 */
+
 .profileInput {
     font-size: 18px;
     height: 35px;
     text-align: right;
+    width: 20%;
+}
+
+/*
+    MEDIA QUERIES
+*/
+
+@media screen and (min-width: 769px) {
+    #user_name {
+        width: 25%;
+    }
+
+    #profileDetails {
+        margin-bottom: 20%;
+    }
+
+    .profileInput {
+        width: 10%;
+    }
+}
+
+@media screen and (min-width: 1025px) {
+    #profileDetails {
+        min-width: 65%;
+    }
 }

@@ -23,8 +23,32 @@
 /*
     IDS
 */
+
 #exerciseSummary {
     align-items: flex-start;
     display: flex;
     flex-direction: column;
+}
+
+/*
+    MEDIA QUERIES
+*/
+
+@media screen and (min-width: 769px) {
+    .exerciseListContainer {
+        margin-bottom: 25%;
+    }
+}
+
+@media screen and (min-width: 1025px) {
+    .exerciseListContainer {
+        margin-bottom: 20%;
+        min-width: 65%;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .exerciseListContainer {
+        margin-bottom: 10%;
+    }
 }

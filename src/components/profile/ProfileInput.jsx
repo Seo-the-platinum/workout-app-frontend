@@ -35,7 +35,7 @@ const ProfileInput = ({field, updateUser, value}) => {
             name={field} 
             onChange={handleChange}
             value={inputValue.toString()}
-            style={{width: field === 'user_name' ? '40%' : '20%'}}
+            
             type={field === 'user_name' ? 'text' : 'number'}/>
     </div>
   )

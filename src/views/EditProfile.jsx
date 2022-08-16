@@ -77,14 +77,13 @@ const EditProfile = () => {
             navigate('/Profile')
         }
     }
-    console.log(updatedUser.age)
   return (
     <div className='viewContainer' style={{backgroundImage: 'url(./images/profileEdit.jpg)'}}>
         <NavBar/>
-        <form className='formContainer'>
-            <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', width:'100%'}}>
+        <form className='formContainer' id='editProfileFormContainer'>
+            <div className='errorsContainer'>
                 {
-                Object.keys(errors).map(key=> <p key={key} style={{color:'red', fontSize: '12px', margin: '1%'}}>{errors[key]}</p>)}
+                Object.keys(errors).map(key=> <p className='errorText' key={key}>{errors[key]}</p>)}
             </div>
             {keys.map(key=> <ProfileInput field={key} key={key} updateUser={handleUser} value={user[key]}/>)}
             <div style={{alignItems: 'center', display: 'flex', justifyContent:'space-between', width: '95%'}}>

@@ -9,12 +9,21 @@ const ProfileDetails = ({user}) => {
   const toEditProfile = ()=> {
     navigate('/edit-profile', {state:{...user}})
   }
-  const keys = Object.keys(user).filter(key=> key !== 'sex' && key !== 'id' && key !== 'email')
+
+  const { id, sex, weight, weight_units, feet, inches, email, ...formattedObj } = user
+  const height = `${user.feet}'${user.inches}"`
+  const formattedWeight = `${user.weight} ${user.weight_units}`
+  const objToDisplay = {
+    ...formattedObj,
+    height,
+    formattedWeight
+  }
+  const keys = Object.keys(objToDisplay)
   return (
     <div id='profileDetails'>
       <div id='profileDetailsList'>
         {keys.map(k=> {
-            return <ProfileField key={k} field={k} value={user[k]}/>
+            return <ProfileField key={k} field={k === 'formattedWeight' ? 'weight' : k} value={objToDisplay[k]}/>
         })}
       </div>
       <div style={{alignItems: 'center', display: 'flex',}}>

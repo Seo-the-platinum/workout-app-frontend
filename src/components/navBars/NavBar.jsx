@@ -8,7 +8,9 @@ const NavBar = ({exercise, header}) => {
 
     const color = header === 'add' || 
         exercise === 'Dead Lifts' || 
-        exercise === 'Overhead Press' || 
+        exercise === 'Overhead Press' ||
+        exercise === 'Rear Squats' ||
+        exercise === 'Tricep Pushdown' ||
         !exercise ? 'white' : 'black'
         
     const navigate = useNavigate()

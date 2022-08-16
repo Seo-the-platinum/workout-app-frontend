@@ -44,12 +44,14 @@ const RecordField = ({field, value, updateField}) => {
   
   return (
     <div className='recordFieldContainer'>
-      <label style={{alignItems:'center',display: 'flex', fontSize: '18px',}}>
-        {`${field}:`}
-        </label>
-        {field === 'weight' || field === 'reps' ? 
+      <label>
+        <h3>{`${field}:`}</h3>
+      </label>
+      {
+        field === 'weight' || field === 'reps' ? 
         <input className='recordsInput' id={field} type='number' value={input.toString()} onChange={handleChange} /> : 
-        <Select onChange={handleSelect} options={options} defaultValue={defaultValue} />}
+        <Select onChange={handleSelect} options={options} defaultValue={defaultValue} />
+      }
     </div>
   )
 }

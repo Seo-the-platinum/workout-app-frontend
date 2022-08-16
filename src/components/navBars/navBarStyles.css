@@ -32,3 +32,28 @@
     display: flex;
     flex: 2; 
 }
+
+/*
+    MEDIA QUERIES
+*/
+
+@media screen and (min-width: 481px) {
+    #navBarBackArrow {
+        margin-left: 5%;
+    }
+
+    #navBarHeader {
+        margin-left: 8%;
+    }
+}
+@media screen and ( min-width: 769px) {
+    #navBarHeader {
+        margin-left: 10%;
+    }
+}
+
+@media screen and (min-width: 1025px) {
+    #navBarHeader {
+        margin-left: 12%;
+    }
+}

@@ -1,3 +1,7 @@
+/*
+    CLASSNAMES
+*/
+
 .addFieldContainer {
     align-items: center;
     display: flex;
@@ -8,12 +12,31 @@
 
 .button {
     border: none;
-    border-radius: '4px';
+    border-radius: 4px;
     background-color: white;
     height: 50px;
     margin-bottom: 15px;
     margin-top: 15px;
     width: 30%;
+}
+
+.editRecordBtnsContainer {
+    display: flex;
+    justify-content: space-between;
+    width: '60%';
+}
+
+.errorsContainer {
+    display: flex; 
+    flex-direction: column;
+    justify-content: center; 
+    width: 100%;
+}
+
+.errorsText {
+    color: red;
+    font-size: 12px;
+    margin: 1%;
 }
 
 .lightLabel {
@@ -27,9 +50,6 @@
     border-radius: 4px;
     display: flex;
     flex-direction: column;
-    /* remember to change bottom margin in media queries so the page
-    is not scrollable on taller views
-    */
     margin-bottom: 35%;
     min-width: 95%;
 }
@@ -43,4 +63,47 @@
     flex-direction: column;
     height: 100vh;
     justify-content: space-between;
+}
+
+/*
+    IDS
+*/
+
+#editProfileFormContainer {
+    margin-bottom: 25%;
+}
+
+/*
+    MEDIA QUERIES
+*/
+
+@media screen and (min-width: 481px) {
+    .button {
+        width: 20%
+    }
+}
+
+@media screen and (min-width: 769px) {
+    .button {
+        width: 15%;
+    }
+
+    #editProfileFormContainer {
+        margin-bottom: 15%;
+    }
+
+    .formContainer {
+        margin-bottom: 15%;
+        min-width: 70%;
+    }
+}
+
+@media screen and (min-width: 1025px) {
+    .formContainer {
+        margin-bottom: 10%;
+    }
+
+    #editProfileFormContainer {
+        margin-bottom: 10%;
+    }
 }
