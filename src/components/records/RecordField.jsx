@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Select from 'react-select'
-import './records.css'
 import { exerciseOptions, restOptions, weightOptions } from '../../utils/selectOptions'
+import './records.css'
 
 const RecordField = ({field, value, updateField}) => {
   const[input, setInput] = useState(value)
@@ -48,7 +48,7 @@ const RecordField = ({field, value, updateField}) => {
         {`${field}:`}
         </label>
         {field === 'weight' || field === 'reps' ? 
-        <input id={field} type='number' value={input} onChange={handleChange} style={{border: 'none', borderRadius: '4px', height: '35px', textAlign: 'right', width: '75px', fontSize: '18px'}}/> : 
+        <input className='recordsInput' id={field} type='number' value={input.toString()} onChange={handleChange} /> : 
         <Select onChange={handleSelect} options={options} defaultValue={defaultValue} />}
     </div>
   )

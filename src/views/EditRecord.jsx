@@ -42,6 +42,7 @@ const EditRecord = () => {
 
   const updateField = (field, value)=> {
     const hasErrors = editErrorChecker(field, value)
+    
     if (hasErrors) {
       setErrors(curr=> {
         return {
@@ -55,17 +56,18 @@ const EditRecord = () => {
         delete copy[field]
         return copy
       })
-    }
-    setData({
-      ...data,
-      [field]: value,
+    } 
+    setData(curr => {
+      return {
+        ...curr,
+        [field]: value,
+      }
     })
   }
 
   const handleUpdate = (e)=> {
     e.preventDefault()
     if (!Object.keys(errors).length) {
-      console.log('no errors here!')
       updateRecord().catch(console.error)
       navigate('/exercises')
     } else {

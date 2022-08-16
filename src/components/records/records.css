@@ -11,3 +11,12 @@
     flex-direction: column;
     max-width: 45%;
 }
+
+.recordsInput {
+    border: none;
+    border-radius: 4px;
+    font-size: 18px;
+    height: 35px;
+    text-align: right;
+    width: 75px;
+}

@@ -1,6 +1,8 @@
 export const editErrorChecker = (field, value)=> {
     const target = document.getElementById(field)
-
+    if (field === 'rest' || field === 'weight_units') {
+        return false
+    }
     if (field === 'reps') {
         if (value < 1 || value > 20 || !value) {
             target.style.color = 'red'

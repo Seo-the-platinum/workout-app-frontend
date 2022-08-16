@@ -2,13 +2,14 @@ import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { updateUser } from '../features/user/userSlice'
 import NavBar from '../components/navBars/NavBar'
-import { useLocation } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import ProfileInput from '../components/profile/ProfileInput'
 import Select from 'react-select'
 import '../globalStyles.css'
 
 const EditProfile = () => {
     const location = useLocation()
+    const navigate = useNavigate()
     const user = location.state
     const [ updatedUser, setUser ] = useState(user)
     const [ errors, setErrors ] = useState({})
@@ -29,6 +30,14 @@ const EditProfile = () => {
             body: JSON.stringify(updatedUser),
             headers: {'Content-Type': 'application/json'},
             method: 'PATCH',
+        })
+    }
+    const handleSelect = (e)=> {
+        setUser(curr=> {
+            return {
+                ...curr,
+            'weight_units': e.value
+            }
         })
     }
 
@@ -63,11 +72,12 @@ const EditProfile = () => {
         if (Object.keys(errors).length > 0) {
             return
         } else {
-            sendData()
+            sendData().catch(console.error)
             dispatch(updateUser(updatedUser))
+            navigate('/Profile')
         }
     }
-
+    console.log(updatedUser.age)
   return (
     <div className='viewContainer' style={{backgroundImage: 'url(./images/profileEdit.jpg)'}}>
         <NavBar/>
@@ -81,7 +91,7 @@ const EditProfile = () => {
                 <label>
                     <h3 style={{color: 'white'}}>Weight_units:</h3>
                 </label>
-                <Select defaultValue={defaultOptions} options={options} styles={{color: 'red'}}/>
+                <Select defaultValue={defaultOptions} onChange={handleSelect} options={options} />
             </div>
             <button className='button' onClick={handleSubmit}>
                 Update

@@ -11,9 +11,9 @@ export const addErrorChecker = (field)=> {
             return false
         }
     } else if (target.name === 'weight') {
-        if (value < 5 || value > 120 || !value) {
+        if (value < 5 || value > 400 || !value) {
             target.style.color = 'red'
-            return 'Please enter a WEIGHT number between 5 and 120'
+            return 'Please enter a WEIGHT number between 5 and 400'
         } else {
             target.style.color = 'black'
             return false

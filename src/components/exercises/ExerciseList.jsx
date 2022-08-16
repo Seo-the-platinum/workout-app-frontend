@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 import ExerciseLink from './ExerciseLink'
 import AddExercise from './AddExercise'
 import { exerciseOptions } from '../../utils/selectOptions'
@@ -11,7 +11,11 @@ const ExerciseList = ({records, user_id}) => {
     records && records.map(r=> hashMap[r.exercise] = true)
     return exerciseOptions.filter(o=> hashMap[o.value] !== true)
   }
-  const filteredExercises = updatedExerciseOptions()
+
+  const filteredExercises = useMemo(()=> {
+    return updatedExerciseOptions()
+  },[records])
+  
   
   return (
     <div className='exerciseListContainer'>

@@ -12,7 +12,7 @@ const ProfileDetails = ({user}) => {
   const keys = Object.keys(user).filter(key=> key !== 'sex' && key !== 'id' && key !== 'email')
   return (
     <div id='profileDetails'>
-      <div style={{display: 'flex', alignItems: 'center', flexDirection: 'column', width: '100%'}}>
+      <div id='profileDetailsList'>
         {keys.map(k=> {
             return <ProfileField key={k} field={k} value={user[k]}/>
         })}

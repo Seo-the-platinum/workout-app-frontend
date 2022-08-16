@@ -1,10 +1,6 @@
-#profileDetailsContainer {
-    align-items: center;
-    display: flex;
-    justify-content: space-between;
-    width: 90%;
-}
-
+/*
+    IDS
+*/
 #profileDetails {
     align-items: center;
     background-color: rgba(0,0,0,0.3);
@@ -15,4 +11,43 @@
     margin-bottom: 35%;
     margin-left: 1%;
     min-width: 80%;
+}
+
+#profileDetailsContainer {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+}
+
+
+#profileDetailsList {
+    align-items: center;
+    display: flex; 
+    flex-direction: column;
+    width: 100%;
+}
+
+#profileFieldContainer {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    min-width: 85%;
+}
+
+
+#profileInputContainer {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    min-width: 95%;
+}
+
+/*
+    CLASSES
+*/
+.profileInput {
+    font-size: 18px;
+    height: 35px;
+    text-align: right;
 }

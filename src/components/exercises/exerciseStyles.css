@@ -1,4 +1,7 @@
-.exerciseContainer {
+/*
+    CLASSES
+*/
+.exerciseLinkContainer {
     align-items: center;
     display: flex;
     justify-content: space-between;
@@ -15,4 +18,13 @@
     margin-left: 1%;
     min-width: 80%;
     margin-bottom: 35%;
+}
+
+/*
+    IDS
+*/
+#exerciseSummary {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
 }

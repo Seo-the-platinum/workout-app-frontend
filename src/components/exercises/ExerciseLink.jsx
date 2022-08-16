@@ -1,7 +1,7 @@
 import React from 'react'
-import './exerciseStyles.css';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import { useNavigate } from 'react-router-dom'
+import './exerciseStyles.css';
 
 const ExerciseLink = ({exercise}) => {
     const navigate = useNavigate()
@@ -10,8 +10,8 @@ const ExerciseLink = ({exercise}) => {
         navigate(`/edit`, {state:{...exercise}})
     }
   return (
-    <div className='exerciseContainer'>
-      <div style={{display: 'flex', flexDirection: 'column', alignItems: 'flex-start'}}>
+    <div className='exerciseLinkContainer'>
+      <div id='exerciseSummary'>
         <h3 style={{margin: '0', color: 'white'}}>{exercise.exercise}</h3>
         <div style={{display:'flex', gap: '10px'}}>
           <p style={{color: 'white',}}>{`${exercise.weight} ${exercise.weight_units}`}</p>
