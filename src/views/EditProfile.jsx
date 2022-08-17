@@ -78,7 +78,7 @@ const EditProfile = () => {
         }
     }
   return (
-    <div className='viewContainer' style={{backgroundImage: 'url(./images/profileEdit.jpg)'}}>
+    <div className='viewContainer' style={{backgroundImage: 'url(./images/cmpProfileEdit.jpg)'}}>
         <NavBar/>
         <form className='formContainer' id='editProfileFormContainer'>
             <div className='errorsContainer'>

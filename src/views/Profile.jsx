@@ -6,7 +6,7 @@ import '../globalStyles.css'
 const Profile = () => {
   const user = useSelector(state=> state.user.value)
   return (
-    <div className='viewContainer' style={{backgroundImage: 'url(./images/profile.jpg)'}}>
+    <div className='viewContainer' style={{backgroundImage: 'url(./images/cmpProfile.jpg)'}}>
       <h1 style={{color: 'white'}}>Profile</h1>
       <ProfileDetails user={user}/>
     </div>
