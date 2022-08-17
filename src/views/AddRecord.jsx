@@ -60,7 +60,7 @@ const AddRecord = () => {
 }
 
   const addRecord = async ()=> {
-    const request = await fetch('http://127.0.0.1:5000/records/create', {
+    const request = await fetch('https://enigmatic-mountain-01046.herokuapp.com/records/create', {
       method: 'POST',
       headers:{'Content-Type': 'application/json'},
       body: JSON.stringify(data)

@@ -26,7 +26,7 @@ const EditProfile = () => {
     ]
 
     const sendData = async ()=> {
-        const request = await fetch(`http://127.0.0.1:5000/users/${user.id}`, {
+        await fetch(`https://enigmatic-mountain-01046.herokuapp.com/users/${user.id}`, {
             body: JSON.stringify(updatedUser),
             headers: {'Content-Type': 'application/json'},
             method: 'PATCH',
@@ -65,7 +65,7 @@ const EditProfile = () => {
     }
     const keys = Object.keys(user).filter(key=> key !== 'sex' && key !== 'weight_units' && key !== 'id' && key !== 'email')
     const defaultOptions = options.filter(o=> o.value === user.weight_units)
-
+    
     const handleSubmit = (e)=> {
         e.preventDefault()
         

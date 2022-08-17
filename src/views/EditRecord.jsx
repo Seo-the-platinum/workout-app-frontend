@@ -21,7 +21,7 @@ const EditRecord = () => {
   const [ errors, setErrors ] = useState({})
 
   const updateRecord = async ()=> {
-     await fetch(`http://127.0.0.1:5000/records/${exercise.id}`, {
+     await fetch(`https://enigmatic-mountain-01046.herokuapp.com/records/${exercise.id}`, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
@@ -33,7 +33,7 @@ const EditRecord = () => {
   }
 
   const deleteRecord = async ()=> {
-   await fetch(`http://127.0.0.1:5000/records/delete/${exercise.id}`, {
+   await fetch(`https://enigmatic-mountain-01046.herokuapp.com/records/delete/${exercise.id}`, {
     method: 'DELETE',
     header: {'Content-Type': 'application/json'}
    })

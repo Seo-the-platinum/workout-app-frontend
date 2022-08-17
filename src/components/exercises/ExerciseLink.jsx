@@ -12,7 +12,7 @@ const ExerciseLink = ({exercise}) => {
   return (
     <div className='exerciseLinkContainer'>
       <div id='exerciseSummary'>
-        <h3 style={{margin: '0', color: 'white'}}>{exercise.exercise}</h3>
+        <h3 style={{margin: '0', color: 'white'}}>{exercise.exercise === 'Tricep Pushdown' ? 'Triceps' : exercise.exercise}</h3>
         <div style={{display:'flex', gap: '10px'}}>
           <p style={{color: 'white',}}>{`${exercise.weight} ${exercise.weight_units}`}</p>
           <p style={{color: 'white'}}>{`${exercise.reps} reps`}</p>
