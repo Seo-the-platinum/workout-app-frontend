@@ -85,22 +85,22 @@ const EditRecord = () => {
 
   switch(exercise.exercise) {
     case 'Bench Press':
-      backgroundImage = './images/benchpress.jpg'
+      backgroundImage = './images/cmpBench.jpg'
       break;
     case 'Dead Lifts':
-      backgroundImage = './images/cmpDeadlifts.jpg'
+      backgroundImage = './images/cmpDeadlifts2.jpg'
       break;
     case 'Rear Squats':
-      backgroundImage = './images/cmpSquats.jpg'
+      backgroundImage = './images/cmpSquats2.jpg'
       break;
     case 'Overhead Press':
-      backgroundImage = './images/cmpOverhead.jpg'
+      backgroundImage = './images/cmpOverhead2.jpg'
       break;
     case 'Curls':
-      backgroundImage = './images/cmpCurls.jpg'
+      backgroundImage = './images/cmpCurls2.jpg'
       break;
     case 'Tricep Pushdown':
-      backgroundImage = './images/cmpTriceps.jpg'
+      backgroundImage = './images/cmpTriceps2.jpg'
       break;
     default:
       break;
