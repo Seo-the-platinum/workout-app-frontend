@@ -96,7 +96,7 @@ const AddRecord = () => {
         </div>
         <div className='addFieldContainer'>
           <label className='lightLabel'>Reps:</label>
-          <input id ='reps' name='reps' onChange={handleInput} type='number' value={data.reps.toString()}/>
+          <input className='addInput' id ='reps' name='reps' min='1' max='20' onChange={handleInput} type='number' value={data.reps.toString()}/>
         </div>
         <div className='addFieldContainer'>
           <label className='lightLabel'>Rest:</label>
@@ -104,7 +104,7 @@ const AddRecord = () => {
         </div>
         <div className='addFieldContainer'>
           <label className='lightLabel'>Weight:</label>
-          <input id='weight' name='weight' onChange={handleInput} type='number' value={data.weight.toString()}/>
+          <input className='addInput' id='weight' name='weight' min='5' max='500' onChange={handleInput} type='number' value={data.weight.toString()}/>
         </div>
         <div className='addFieldContainer'>
           <label className='lightLabel'>Weight Units:</label>

@@ -1,11 +1,14 @@
 import React, { useState } from 'react'
 import Select from 'react-select'
 import { exerciseOptions, restOptions, weightOptions } from '../../utils/selectOptions'
+import { getMinMax } from '../../utils/recordsMinMax'
 import './records.css'
 
 const RecordField = ({field, value, updateField}) => {
   const[input, setInput] = useState(value)
   const[select, setSelect] = useState(value)
+
+  const minMaxes = getMinMax(field)
 
   const handleChange = (e)=> {
     const regExValue = e.target.value.replace(/^0+/, '')
@@ -49,7 +52,7 @@ const RecordField = ({field, value, updateField}) => {
       </label>
       {
         field === 'weight' || field === 'reps' ? 
-        <input className='recordsInput' id={field} type='number' value={input.toString()} onChange={handleChange} /> : 
+        <input className='recordsInput' id={field} min={minMaxes[0]} max={minMaxes[1]} type='number' value={input.toString()} onChange={handleChange} /> : 
         <Select onChange={handleSelect} options={options} defaultValue={defaultValue} />
       }
     </div>
